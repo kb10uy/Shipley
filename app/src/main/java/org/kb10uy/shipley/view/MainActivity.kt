@@ -1,6 +1,7 @@
 package org.kb10uy.shipley.view
 
 import android.os.Bundle
+import android.view.Menu
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
 import androidx.drawerlayout.widget.DrawerLayout
@@ -28,5 +29,28 @@ class MainActivity : AppCompatActivity() {
         val appBarConfiguration = AppBarConfiguration(navController.graph, drawerLayout)
         toolbar.setupWithNavController(navController, appBarConfiguration)
         navView.setupWithNavController(navController)
+
+        toolbar.inflateMenu(R.menu.main_option)
+        toolbar.setOnMenuItemClickListener { item ->
+            when (item.itemId) {
+                R.id.action_settings -> {
+                    navController.navigate(R.id.action_home_to_settings)
+                    true
+                }
+                else -> false
+            }
+        }
+
+        navController.addOnDestinationChangedListener {_, destination, _ ->
+            val menu = toolbar.menu
+            when (destination.id) {
+                R.id.nav_settings -> {
+                    menu.findItem(R.id.action_settings).isVisible = false
+                }
+                else -> {
+                    menu.findItem(R.id.action_settings).isVisible = true
+                }
+            }
+        }
     }
 }
