@@ -1,4 +1,4 @@
-package org.kb10uy.shipley.ui.notifications
+package org.kb10uy.shipley.view
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -9,6 +9,7 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import org.kb10uy.shipley.R
+import org.kb10uy.shipley.viewmodel.NotificationsViewModel
 
 class NotificationsFragment : Fragment() {
 
