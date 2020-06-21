@@ -24,4 +24,5 @@
     <string name="label_domain_name">Domain Name</string>
     <string name="label_access_token">Access Token</string>
     <string name="action_verify_register">Verify and Register</string>
+    <string name="title_oss_licenses">OSS Licenses</string>
 </resources>

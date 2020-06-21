@@ -27,6 +27,17 @@
                 android:resource="@xml/authenticator" />
         </service>
 
+        <!--
+            OssLicensesActivity 用オーバーライド
+            c.f. https://qiita.com/sho5nn/items/f63ebd7ccc0c86d98e4b
+        -->
+        <activity
+            android:name="com.google.android.gms.oss.licenses.OssLicensesMenuActivity"
+            android:theme="@style/Theme.AppCompat.Light.DarkActionBar" />
+        <activity
+            android:name="com.google.android.gms.oss.licenses.OssLicensesActivity"
+            android:theme="@style/Theme.AppCompat.Light.DarkActionBar" />
+
         <!-- アプリ本体 -->
         <activity
             android:name=".view.MainActivity"

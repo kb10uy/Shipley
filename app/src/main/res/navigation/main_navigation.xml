@@ -22,6 +22,16 @@
     <fragment
         android:id="@+id/nav_settings"
         android:name="org.kb10uy.shipley.view.SettingsFragment"
-        android:label="@string/title_settings" />
-    <action android:id="@+id/action_global_to_settings" app:destination="@id/nav_settings" />
+        android:label="@string/title_settings" >
+        <action
+            android:id="@+id/action_settings_to_licenses"
+            app:destination="@id/nav_licenses" />
+    </fragment>
+    <activity
+        android:id="@+id/nav_licenses"
+        android:name="com.google.android.gms.oss.licenses.OssLicensesMenuActivity"
+        android:label="@string/title_oss_licenses" />
+    <action
+        android:id="@+id/action_global_to_settings"
+        app:destination="@id/nav_settings" />
 </navigation>

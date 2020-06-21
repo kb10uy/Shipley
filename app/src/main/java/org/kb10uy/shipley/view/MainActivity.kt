@@ -2,7 +2,8 @@ package org.kb10uy.shipley.view
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
-import androidx.navigation.Navigation
+import androidx.navigation.findNavController
+import androidx.navigation.fragment.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupWithNavController
 import org.kb10uy.shipley.R
@@ -23,7 +24,8 @@ class MainActivity : AppCompatActivity() {
         val navView = binding.navView
         val toolbar = binding.toolbar
 
-        val navController = Navigation.findNavController(binding.root)
+        val navController =
+            supportFragmentManager.findFragmentById(R.id.nav_host_fragment)!!.findNavController()
         val appBarConfiguration = AppBarConfiguration(navController.graph, binding.container)
         toolbar.setupWithNavController(navController, appBarConfiguration)
         navView.setupWithNavController(navController)
@@ -39,7 +41,7 @@ class MainActivity : AppCompatActivity() {
             }
         }
 
-        navController.addOnDestinationChangedListener {_, destination, _ ->
+        navController.addOnDestinationChangedListener { _, destination, _ ->
             val menu = toolbar.menu
             when (destination.id) {
                 R.id.nav_settings -> {
