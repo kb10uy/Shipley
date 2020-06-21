@@ -1,4 +1,4 @@
-package org.kb10uy.shipley
+package org.kb10uy.shipley.authentication
 
 import android.accounts.AbstractAccountAuthenticator
 import android.accounts.Account
@@ -9,12 +9,20 @@ import android.content.Intent
 import android.os.Bundle
 import org.kb10uy.shipley.view.AuthenticatorActivity
 
+/**
+ * Mastodon アカウントを管理する Authenticator
+ */
 class ShipleyAccountAuthenticator(private val context: Context) :
     AbstractAccountAuthenticator(context) {
     companion object {
         const val ACCOUNT_TYPE = "org.kb10uy.shipley"
+        const val TYPE_FULL_ACCESS = "fullAccess"
+        const val KEY_DOMAIN_NAME = "domainName"
     }
 
+    /**
+     * 「アカウントを追加」の後に呼ばれるやつ
+     */
     override fun addAccount(
         response: AccountAuthenticatorResponse?,
         accountType: String?,
@@ -30,22 +38,19 @@ class ShipleyAccountAuthenticator(private val context: Context) :
         return bundle
     }
 
+    /**
+     * AccountManager にアクセストークンがキャッシュされていない時に呼ばれるやつ。
+     * だが、アクセストークンしか保持していないので原則として呼ばれない。
+     */
     override fun getAuthToken(
         response: AccountAuthenticatorResponse?,
         account: Account?,
         authTokenType: String?,
         options: Bundle?
     ): Bundle {
-        val manager = AccountManager.get(context)
-        val name = account?.name
-        val accessToken = manager.getPassword(account)
-
-        manager.setAuthToken(account, authTokenType, accessToken)
-
         val bundle = Bundle()
-        bundle.putString(AccountManager.KEY_ACCOUNT_TYPE, ACCOUNT_TYPE)
-        bundle.putString(AccountManager.KEY_ACCOUNT_NAME, name)
-        bundle.putString(AccountManager.KEY_AUTHTOKEN, accessToken)
+        bundle.putInt(AccountManager.KEY_ERROR_CODE, -1)
+        bundle.putString(AccountManager.KEY_ERROR_MESSAGE, "Invalid account state. Re-register it.")
         return bundle
     }
 

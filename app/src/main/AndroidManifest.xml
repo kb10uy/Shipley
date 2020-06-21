@@ -3,6 +3,7 @@
     package="org.kb10uy.shipley">
 
     <uses-permission android:name="android.permission.AUTHENTICATE_ACCOUNTS" />
+    <uses-permission android:name="android.permission.INTERNET"/>
 
     <application
         android:allowBackup="true"
@@ -16,7 +17,7 @@
             android:name=".view.AuthenticatorActivity"
             android:exported="true" />
         <service
-            android:name=".ShipleyAuthenticationService"
+            android:name=".authentication.ShipleyAuthenticationService"
             android:enabled="true"
             android:exported="false">
             <intent-filter>
