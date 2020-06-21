@@ -2,16 +2,10 @@
     <string name="app_name" translatable="false">Shipley</string>
     <string name="title_home">Home</string>
     <string name="title_notifications">Notifications</string>
-    <string name="navigation_drawer_open">Open navigation drawer</string>
-    <string name="navigation_drawer_close">Close navigation drawer</string>
     <string name="nav_header_title">Android Studio</string>
     <string name="nav_header_subtitle">android.studio@android.com</string>
     <string name="nav_header_desc">Navigation header</string>
     <string name="title_settings">Settings</string>
-
-    <string name="menu_home">Home</string>
-    <string name="menu_gallery">Gallery</string>
-    <string name="menu_slideshow">Slideshow</string>
 
     <!-- Preference Titles -->
     <string name="messages_header">Messages</string>
@@ -27,4 +21,7 @@
     <string name="attachment_summary_on">Automatically download attachments for incoming emails
     </string>
     <string name="attachment_summary_off">Only download attachments when manually requested</string>
+    <string name="label_domain_name">Domain Name</string>
+    <string name="label_access_token">Access Token</string>
+    <string name="action_verify_register">Verify and Register</string>
 </resources>

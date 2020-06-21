@@ -13,9 +13,6 @@
         <action
             android:id="@+id/action_home_to_notifications"
             app:destination="@id/nav_notifications" />
-        <action
-            android:id="@+id/action_home_to_settings"
-            app:destination="@id/nav_settings" />
     </fragment>
     <fragment
         android:id="@+id/nav_notifications"
@@ -26,4 +23,5 @@
         android:id="@+id/nav_settings"
         android:name="org.kb10uy.shipley.view.SettingsFragment"
         android:label="@string/title_settings" />
+    <action android:id="@+id/action_global_to_settings" app:destination="@id/nav_settings" />
 </navigation>

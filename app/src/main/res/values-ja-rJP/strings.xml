@@ -3,4 +3,9 @@
     <string name="title_home">ホーム</string>
     <string name="title_notifications">通知</string>
     <string name="title_settings">設定</string>
+    <string name="label_domain_name">ドメイン名</string>
+    <string name="label_access_token">アクセストークン</string>
+    <string name="action_verify_register">検証して登録</string>
+    <string name="nav_header_title">ユーザー名</string>
+    <string name="nav_header_subtitle">アカウント名</string>
 </resources>
