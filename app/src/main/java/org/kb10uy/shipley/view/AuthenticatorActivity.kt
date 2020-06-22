@@ -55,30 +55,36 @@ class AuthenticatorActivity : AppCompatActivity() {
             val mastodonApi = retrofit.create(MastodonApi::class.java)
 
             val response = runBlocking(Dispatchers.IO) { mastodonApi.accountVerifyCredentials() }
-            if (response.isSuccessful) {
-                val mastodonAccount = response.body()!!
-
-                val accountManager = AccountManager.get(this)
-                val account = Account(
-                    "${mastodonAccount.username}@${domain}",
-                    ShipleyAccountAuthenticator.ACCOUNT_TYPE
-                )
-                val accountBundle = Bundle().apply {
-                    putString(ShipleyAccountAuthenticator.KEY_DOMAIN_NAME, domain)
-                }
-
-                accountManager.addAccountExplicitly(account, "", accountBundle)
-                accountManager.setAuthToken(
-                    account,
-                    ShipleyAccountAuthenticator.TYPE_FULL_ACCESS,
-                    accessToken
-                )
-
-                return true
-            } else {
-                Toast.makeText(applicationContext, "Invalid", Toast.LENGTH_SHORT).show()
-                return false
+            if (!response.isSuccessful) {
+                throw Exception("Cannot authenticate")
             }
+            val mastodonAccount = response.body()!!
+
+            val accountManager = AccountManager.get(this)
+            val account = Account(
+                "${mastodonAccount.username}@${domain}",
+                ShipleyAccountAuthenticator.ACCOUNT_TYPE
+            )
+            val accountBundle = Bundle().apply {
+                putString(
+                    ShipleyAccountAuthenticator.KEY_DISPLAY_NAME,
+                    mastodonAccount.displayName
+                )
+                putString(
+                    ShipleyAccountAuthenticator.KEY_AVATAR,
+                    mastodonAccount.avatar
+                )
+                putString(ShipleyAccountAuthenticator.KEY_DOMAIN_NAME, domain)
+            }
+
+            accountManager.addAccountExplicitly(account, "", accountBundle)
+            accountManager.setAuthToken(
+                account,
+                ShipleyAccountAuthenticator.TYPE_FULL_ACCESS,
+                accessToken
+            )
+
+            return true
         } catch (e: Exception) {
             Toast.makeText(applicationContext, "Invalid: ${e.message}", Toast.LENGTH_SHORT).show()
             return false

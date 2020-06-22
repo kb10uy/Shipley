@@ -18,6 +18,8 @@ class ShipleyAccountAuthenticator(private val context: Context) :
         const val ACCOUNT_TYPE = "org.kb10uy.shipley"
         const val TYPE_FULL_ACCESS = "fullAccess"
         const val KEY_DOMAIN_NAME = "domainName"
+        const val KEY_DISPLAY_NAME = "displayName"
+        const val KEY_AVATAR = "avatar"
     }
 
     /**

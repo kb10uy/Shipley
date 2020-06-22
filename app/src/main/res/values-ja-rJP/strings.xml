@@ -9,4 +9,5 @@
     <string name="nav_header_title">ユーザー名</string>
     <string name="nav_header_subtitle">アカウント名</string>
     <string name="title_oss_licenses">オープンソースソフトウェア ライセンス</string>
+    <string name="title_account_list">アカウント</string>
 </resources>

@@ -14,7 +14,6 @@ import org.kb10uy.shipley.view.adapter.HomeTimelineAdapter
 import org.kb10uy.shipley.viewmodel.HomeViewModel
 
 class HomeFragment : Fragment() {
-
     private var _binding: FragmentHomeBinding? = null
 
     private val homeViewModel: HomeViewModel by viewModels()
